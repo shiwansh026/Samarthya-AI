@@ -1,0 +1,52 @@
+# ============================================
+# Samarth AI - Root .gitignore
+# ============================================
+
+# ---- Environment Variables (CRITICAL - never push secrets) ----
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ---- Python / Django ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+.Python
+env/
+venv/
+.venv/
+pip-selfcheck.json
+db.sqlite3
+*.sqlite3
+*.log
+media/
+
+# ---- Node.js / Frontend ----
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# ---- IDE / Editor ----
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# ---- OS ----
+*.swp
+*.swo
+*~
