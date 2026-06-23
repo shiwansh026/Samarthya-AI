@@ -83,14 +83,6 @@ The application has been customized with a **minimalist, monochrome light-theme 
    ```bash
    npm run dev
    ```
-
----
-
-## 🔑 Default Administrator Login
-A default superuser has been seeded in the database for instant access to the **Admin Dashboard**:
-* **Email:** `admin@samarthya.ai`
-* **Password:** `adminpassword123`
-
 To create additional administrators, execute:
 ```bash
 python manage.py createsuperuser
