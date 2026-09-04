@@ -1,3 +1,13 @@
+---
+title: Samarthya AI
+emoji: 🚀
+colorFrom: gray
+colorTo: gray
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Samarthya AI 🚀
 
 Samarthya AI is a premium, minimalist career guidance platform designed for Grade 8-12 students. It combines advanced AI career roadmapping with direct access to verified mentors for consultation and counselling.
