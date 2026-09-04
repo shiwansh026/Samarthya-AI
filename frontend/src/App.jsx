@@ -46,23 +46,6 @@ export default function App() {
       setLoading(false);
     };
 
-    // Check for query parameters related to email verification
-    const params = new URLSearchParams(window.location.search);
-    const verified = params.get('verified');
-    const errorParam = params.get('error');
-
-    if (verified === 'true') {
-      setToastSuccess('Email verified successfully! You can now log in.');
-      setShowModal('login');
-      setActiveTab('home');
-      // Clear query params
-      window.history.replaceState({}, document.title, window.location.pathname);
-    } else if (verified === 'false' || errorParam === 'invalid_token') {
-      setToastError('Invalid or expired email verification link.');
-      setActiveTab('home');
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-
     initAuth();
   }, []);
 

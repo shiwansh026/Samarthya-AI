@@ -149,9 +149,6 @@ CORS_ALLOW_HEADERS = [
 # Email backend (prints to terminal console)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Frontend URL (for email verification redirects)
-FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:5173')
-
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'

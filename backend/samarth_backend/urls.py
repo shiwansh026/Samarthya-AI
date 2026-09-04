@@ -30,7 +30,6 @@ urlpatterns = [
     # Authentication & User Management
     path('api/auth/register/', accounts_views.RegisterView.as_view(), name='auth_register'),
     path('api/auth/login/', accounts_views.CustomTokenObtainPairView.as_view(), name='auth_login'),
-    path('api/auth/verify-email/<str:token>/', accounts_views.VerifyEmailView.as_view(), name='auth_verify_email'),
     path('api/auth/social/google/', accounts_views.GoogleLoginView.as_view(), name='auth_social_google'),
     path('api/auth/profile/', accounts_views.UserProfileView.as_view(), name='auth_profile'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

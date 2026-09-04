@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Users, Compass, CheckCircle2, ArrowRight, Lock, Mail, User, ShieldAlert } from 'lucide-react';
+import { BookOpen, Users, Compass, CheckCircle2, ArrowRight, Lock, User, ShieldAlert } from 'lucide-react';
 import { login as apiLogin, register as apiRegister, googleLogin as apiGoogleLogin, getProfile } from '../api';
 
 export default function Home({ onLoginSuccess, showModal, setShowModal }) {
@@ -16,7 +16,6 @@ export default function Home({ onLoginSuccess, showModal, setShowModal }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
-  const [needsVerification, setNeedsVerification] = useState(false);
 
   const resetForm = () => {
     setFormData({
@@ -29,7 +28,6 @@ export default function Home({ onLoginSuccess, showModal, setShowModal }) {
     });
     setError('');
     setSuccessMsg('');
-    setNeedsVerification(false);
   };
 
   const handleInputChange = (e) => {
@@ -62,8 +60,8 @@ export default function Home({ onLoginSuccess, showModal, setShowModal }) {
           formData.role
         );
         
+        setIsRegister(false);
         setSuccessMsg(data.message);
-        setNeedsVerification(true);
       } else {
         await apiLogin(formData.email, formData.password);
         // JWT login only returns tokens, so fetch user profile separately
@@ -228,30 +226,12 @@ export default function Home({ onLoginSuccess, showModal, setShowModal }) {
               </div>
             )}
 
-            {needsVerification ? (
-              /* Success Email Verification Notice State */
-              <div className="text-center py-6">
-                <div className="bg-zinc-100 border border-zinc-200 text-zinc-900 p-4 rounded-full w-fit mx-auto mb-6">
-                  <Mail className="w-10 h-10" />
+            <>
+              {successMsg && (
+                <div className="bg-zinc-100 border border-zinc-200 text-zinc-700 px-4 py-3 rounded-xl mb-6 text-xs">
+                  {successMsg}
                 </div>
-                <h4 className="text-lg font-bold text-zinc-900 mb-2">Check Your Terminal Console!</h4>
-                <p className="text-sm text-zinc-500 mb-6 leading-relaxed">
-                  We've printed the email verification link to the local backend terminal. Please click it to verify your account, then sign in below.
-                </p>
-                <button
-                  onClick={() => {
-                    setIsRegister(false);
-                    setNeedsVerification(false);
-                    setError('');
-                    setSuccessMsg('');
-                  }}
-                  className="w-full bg-zinc-900 hover:bg-zinc-800 text-white font-semibold py-3 rounded-xl shadow-sm transition-all"
-                >
-                  Proceed to Sign In
-                </button>
-              </div>
-            ) : (
-              /* Auth Forms */
+              )}
               <form onSubmit={handleSubmit} className="space-y-4">
                 {isRegister && (
                   <>
@@ -416,7 +396,7 @@ export default function Home({ onLoginSuccess, showModal, setShowModal }) {
                   </button>
                 </div>
               </form>
-            )}
+            </>
           </div>
         </div>
       )}

@@ -61,11 +61,6 @@ export const register = async (firstName, lastName, email, password, confirmPass
   return response.data;
 };
 
-export const verifyEmail = async (token) => {
-  const response = await api.post(`/api/auth/verify-email/${token}/`);
-  return response.data;
-};
-
 export const googleLogin = async (credential, role, mockRole = null) => {
   let url = `/api/auth/social/google/?role=${role}`;
   if (credential) {

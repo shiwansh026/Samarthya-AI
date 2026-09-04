@@ -68,14 +68,13 @@ class RegisterSerializer(serializers.ModelSerializer):
         validated_data.pop('confirm_password')
         password = validated_data.pop('password')
         
-        # Determine is_verified (False by default for email signup)
         user = User.objects.create_user(
             email=validated_data['email'],
             password=password,
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
             role=validated_data['role'],
-            is_verified=False,
+            is_verified=True,
             is_active=True
         )
         
