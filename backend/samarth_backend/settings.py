@@ -146,9 +146,6 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
-# Email backend (prints to terminal console)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
